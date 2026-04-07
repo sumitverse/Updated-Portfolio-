@@ -189,19 +189,25 @@ section{padding:clamp(5rem,9vw,8rem) 0}
 
 /* SKILLS */
 #skills{background:var(--base)}
-.sk-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;gap:2rem;flex-wrap:wrap}
-.sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
-.sk-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--r-lg);padding:1.5rem;position:relative;overflow:hidden;transition:all .4s var(--ease-out);cursor:default}
-.sk-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease-out);border-radius:0 2px 2px 0}
-.sk-card:hover{transform:translateY(-4px);box-shadow:var(--lg);border-color:var(--ghost)}
-.sk-card:hover::after{transform:scaleY(1)}
-.sk-hd{display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem}
-.sk-ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
-.sk-nm{font-size:.92rem;font-weight:700;color:var(--ink);letter-spacing:-.2px}
-.sk-sb{font-size:.72rem;color:var(--muted);font-weight:500;margin-top:1px}
-.sk-tags{display:flex;flex-wrap:wrap;gap:.35rem}
-.sk-tag{padding:.25rem .6rem;border-radius:5px;font-size:.72rem;font-weight:600;background:var(--surface);color:var(--muted);border:1px solid var(--rule);transition:all .2s}
-.sk-card:hover .sk-tag{background:var(--blue-pale);color:var(--blue);border-color:var(--blue-mid)}
+.sk-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap}
+
+/* Tech Stack Highlight Style */
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.sk-card{background:var(--white);border:1px solid var(--rule);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:all .4s var(--ease-out);cursor:default;box-shadow:var(--sm)}
+.sk-card::before{content:'';position:absolute;top:-100%;left:-100%;width:300px;height:300px;background:radial-gradient(circle,rgba(26,86,255,.1),transparent 70%);border-radius:50%;pointer-events:none;transition:all .5s var(--ease-out)}
+.sk-card:hover::before{top:-50%;left:-50%}
+.sk-card:hover{transform:translateY(-8px);box-shadow:var(--lg);border-color:var(--blue-mid)}
+.sk-hd{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;position:relative;z-index:1}
+.sk-ic{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;background:var(--surface);border:1px solid var(--rule);transition:all .3s var(--ease-out)}
+.sk-card:hover .sk-ic{background:var(--blue);color:var(--white);transform:scale(1.1);box-shadow:0 8px 24px rgba(26,86,255,.35)}
+.sk-nm{font-size:1rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.sk-sb{font-size:.75rem;color:var(--muted);font-weight:600;margin-top:.25rem;letter-spacing:.05em;text-transform:uppercase}
+.sk-tags{display:flex;flex-wrap:wrap;gap:.6rem;position:relative;z-index:1}
+.sk-tag{padding:.5rem 1rem;border-radius:10px;font-size:.8rem;font-weight:700;background:var(--white);color:var(--ink);border:2px solid var(--rule);transition:all .3s var(--ease-out);letter-spacing:.01em;display:inline-flex;align-items:center;gap:.4rem;cursor:pointer;text-transform:uppercase}
+.sk-tag svg{display:inline-block;flex-shrink:0}
+.sk-tag:hover{transform:translateY(-4px);background:var(--blue);color:var(--white);border-color:var(--blue);box-shadow:0 8px 20px rgba(26,86,255,.25)}
+
+@media(max-width:768px){.sk-grid{grid-template-columns:1fr}}
 
 /* PROJECTS */
 #projects{background:var(--white)}
@@ -209,15 +215,16 @@ section{padding:clamp(5rem,9vw,8rem) 0}
 .pj-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.25rem}
 .pj-card{background:var(--base);border:1px solid var(--rule);border-radius:var(--r-xl);overflow:hidden;transition:all .4s var(--ease-out);display:flex;flex-direction:column}
 .pj-card:hover{transform:translateY(-6px);box-shadow:var(--xl);border-color:var(--ghost)}
-.pj-lg{grid-column:span 7}
-.pj-sm{grid-column:span 5}
+.pj-lg{grid-column:span 6}
+.pj-sm{grid-column:span 6}
 .pj-md{grid-column:span 6}
-.pj-thumb{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pj-thumb{height:240px;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;background:#111}
 .pj-lg .pj-thumb{height:240px}
-.pj-tc{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:.75rem}
-.pj-icon{font-size:2.8rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,.2))}
-.pj-tt{font-family:var(--fd);font-style:italic;font-size:1.15rem;font-weight:400;color:rgba(255,255,255,.9);letter-spacing:-.3px;text-align:center;padding:0 1.5rem}
-.pj-fade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.55))}
+.pj-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pj-tc{position:relative;z-index:1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.75rem;padding:1.3rem}
+.pj-tt{font-family:var(--fd);font-style:italic;font-size:1.15rem;font-weight:400;color:rgba(255,255,255,.95);letter-spacing:-.3px;text-align:center;padding:0 1.5rem}
+.pj-fade{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,15,.92),rgba(10,10,15,.15));pointer-events:none}
+.pj-icon{display:none}
 .bg-t{background:linear-gradient(145deg,#0f172a,#1e3a5f,#0c4a6e)}
 .bg-a{background:linear-gradient(145deg,#1e1b4b,#312e81,#4c1d95)}
 .bg-g{background:linear-gradient(145deg,#0f2027,#203a43,#1a365d)}
@@ -432,8 +439,8 @@ footer::before{content:'';position:absolute;top:-100px;left:50%;transform:transl
     <div class="hero-bot">
       <div class="hbs-row">
         <div class="hbs"><div class="hbs-n">10+</div><div class="hbs-l">Technologies</div></div>
-        <div class="hbs"><div class="hbs-n">5</div><div class="hbs-l">Projects</div></div>
-        <div class="hbs"><div class="hbs-n">3+</div><div class="hbs-l">Yrs Exp.</div></div>
+        <div class="hbs"><div class="hbs-n">5+</div><div class="hbs-l">Projects</div></div>
+        <div class="hbs"><div class="hbs-n">1+</div><div class="hbs-l">Yrs Exp.</div></div>
         <div class="hbs"><div class="hbs-n">∞</div><div class="hbs-l">Passion</div></div>
       </div>
       <div class="scroll-hint">Scroll to explore<svg class="scroll-arr" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
@@ -480,13 +487,13 @@ footer::before{content:'';position:absolute;top:-100px;left:50%;transform:transl
         <div class="avail-t"><span class="bp"></span>Open to opportunities</div>
       </div>
       <div class="ab-c ab-stat reveal d1"><div class="ab-stat-n">3+</div><div class="ab-stat-l">Years of active development experience</div></div>
-      <div class="ab-c ab-stat reveal d2"><div class="ab-stat-n">5</div><div class="ab-stat-l">Real-world projects shipped</div></div>
+      <div class="ab-c ab-stat reveal d2"><div class="ab-stat-n">5+</div><div class="ab-stat-l">Real-world projects shipped</div></div>
       <div class="ab-c ab-stat reveal d3"><div class="ab-stat-n">10+</div><div class="ab-stat-l">Technologies mastered</div></div>
       <div class="ab-c ab-stat reveal d4"><div class="ab-stat-n">∞</div><div class="ab-stat-l">Passion for continuous improvement</div></div>
       <div class="ab-c ab-dark reveal d2">
         <div class="qg">"</div>
         <blockquote>Code is not just instructions — it's the architecture of experiences, the difference between software people endure and products they love.</blockquote>
-        <cite>— Sumit Kumar, Sumitverse</cite>
+        <cite>— Sumit Kumar, sumitverse</cite>
       </div>
       <div class="ab-c ab-info reveal d2">
         <div class="info-r"><div class="info-ic">📍</div>India — open to remote worldwide</div>
@@ -494,7 +501,7 @@ footer::before{content:'';position:absolute;top:-100px;left:50%;transform:transl
         <div class="info-r"><div class="info-ic">💼</div>Web Dev &amp; Design Intern @ Oasis Infobyte</div>
         <div class="info-r"><div class="info-ic">⚛️</div>React · Angular · Node.js · TypeScript</div>
         <div class="info-r"><div class="info-ic">🎨</div>User-centered interface &amp; UX design</div>
-        <div class="info-r"><div class="info-ic">✉️</div>sumitverse@gmail.com</div>
+        <div class="info-r"><div class="info-ic">✉️</div>sumitverse26@gmail.com</div>
       </div>
     </div>
   </div>
@@ -511,14 +518,14 @@ footer::before{content:'';position:absolute;top:-100px;left:50%;transform:transl
       </div>
     </div>
     <div class="sk-grid">
-      <div class="sk-card reveal"><div class="sk-hd"><div class="sk-ic" style="background:#eff6ff;border:1px solid #bfdbfe">🎨</div><div><div class="sk-nm">Frontend Core</div><div class="sk-sb">Foundation technologies</div></div></div><div class="sk-tags"><span class="sk-tag">HTML5</span><span class="sk-tag">CSS3</span><span class="sk-tag">JavaScript ES6+</span><span class="sk-tag">Responsive Design</span></div></div>
-      <div class="sk-card reveal d1"><div class="sk-hd"><div class="sk-ic" style="background:#f0fdf4;border:1px solid #bbf7d0">⚛️</div><div><div class="sk-nm">React Ecosystem</div><div class="sk-sb">UI framework</div></div></div><div class="sk-tags"><span class="sk-tag">React.js</span><span class="sk-tag">Hooks</span><span class="sk-tag">Context API</span><span class="sk-tag">Redux</span></div></div>
-      <div class="sk-card reveal d2"><div class="sk-hd"><div class="sk-ic" style="background:#fef3c7;border:1px solid #fde68a">🅰️</div><div><div class="sk-nm">Angular Platform</div><div class="sk-sb">Enterprise framework</div></div></div><div class="sk-tags"><span class="sk-tag">Angular</span><span class="sk-tag">Ionic</span><span class="sk-tag">TypeScript</span><span class="sk-tag">RxJS</span></div></div>
-      <div class="sk-card reveal d3"><div class="sk-hd"><div class="sk-ic" style="background:#ecfdf5;border:1px solid #6ee7b7">🟢</div><div><div class="sk-nm">Backend &amp; API</div><div class="sk-sb">Server &amp; data layer</div></div></div><div class="sk-tags"><span class="sk-tag">Node.js</span><span class="sk-tag">Express.js</span><span class="sk-tag">REST APIs</span><span class="sk-tag">SQL</span></div></div>
-      <div class="sk-card reveal"><div class="sk-hd"><div class="sk-ic" style="background:#fdf2f8;border:1px solid #f5d0fe">💜</div><div><div class="sk-nm">Languages</div><div class="sk-sb">Programming languages</div></div></div><div class="sk-tags"><span class="sk-tag">TypeScript</span><span class="sk-tag">Python</span><span class="sk-tag">C</span><span class="sk-tag">C++</span></div></div>
-      <div class="sk-card reveal d1"><div class="sk-hd"><div class="sk-ic" style="background:#fff7ed;border:1px solid #fed7aa">🛠️</div><div><div class="sk-nm">Tools &amp; Workflow</div><div class="sk-sb">Dev environment</div></div></div><div class="sk-tags"><span class="sk-tag">Git</span><span class="sk-tag">GitHub</span><span class="sk-tag">VS Code</span><span class="sk-tag">npm</span></div></div>
-      <div class="sk-card reveal d2"><div class="sk-hd"><div class="sk-ic" style="background:#eff6ff;border:1px solid #bfdbfe">🎯</div><div><div class="sk-nm">UI/UX Design</div><div class="sk-sb">Design thinking</div></div></div><div class="sk-tags"><span class="sk-tag">Wireframing</span><span class="sk-tag">Prototyping</span><span class="sk-tag">Design Systems</span></div></div>
-      <div class="sk-card reveal d3"><div class="sk-hd"><div class="sk-ic" style="background:#f0fdf4;border:1px solid #bbf7d0">📱</div><div><div class="sk-nm">Mobile Dev</div><div class="sk-sb">Cross-platform</div></div></div><div class="sk-tags"><span class="sk-tag">Ionic</span><span class="sk-tag">Angular Mobile</span><span class="sk-tag">PWA</span></div></div>
+      <div class="sk-card reveal"><div class="sk-hd"><div class="sk-ic" style="background:#eff6ff;border:1px solid #bfdbfe"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><text x="8" y="24" font-size="20" font-weight="bold" fill="#ff6b35">H</text></svg></div><div><div class="sk-nm">Frontend Core</div><div class="sk-sb">Foundation technologies</div></div></div><div class="sk-tags"><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#ff6b35" style="display:inline;margin-right:4px"><path d="M2 2h20v20H2z"/><text x="5" y="18" font-size="12" fill="white" font-weight="bold">H</text></svg>HTML5</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#1572b6" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#1572b6" rx="2"/><path d="M8 8h8v8H8z" fill="#fff" opacity=".3"/></svg>CSS3</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f7df1e" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#f7df1e"/><text x="4" y="18" font-size="10" font-weight="bold">JS</text></svg>JavaScript</span><span class="sk-tag">Responsive Design</span></div></div>
+      <div class="sk-card reveal d1"><div class="sk-hd"><div class="sk-ic" style="background:#f0fdf4;border:1px solid #bbf7d0"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" fill="#61dafb" opacity=".3"/><circle cx="16" cy="16" r="3" fill="#61dafb"/><path d="M16 16c6 0 11-3 11-6.5S22 3 16 3s-11 3-11 6.5S10 16 16 16" stroke="#61dafb" stroke-width="1" fill="none"/><path d="M16 16c0 6 3 11 6.5 11S29 22 29 16s-3-11-6.5-11S16 10 16 16" stroke="#61dafb" stroke-width="1" fill="none" transform="rotate(60 16 16)"/><path d="M16 16c0 6 3 11 6.5 11S29 22 29 16s-3-11-6.5-11S16 10 16 16" stroke="#61dafb" stroke-width="1" fill="none" transform="rotate(120 16 16)"/></svg></div><div><div class="sk-nm">React Ecosystem</div><div class="sk-sb">UI framework</div></div></div><div class="sk-tags"><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#61dafb" style="display:inline;margin-right:4px"><circle cx="12" cy="12" r="2" fill="#61dafb"/><circle cx="12" cy="12" r="10" fill="none" stroke="#61dafb" stroke-width="1.5"/></svg>React.js</span><span class="sk-tag">Hooks</span><span class="sk-tag">Context API</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#764abc" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#764abc" rx="2"/></svg>Redux</span></div></div>
+      <div class="sk-card reveal d2"><div class="sk-hd"><div class="sk-ic" style="background:#fef3c7;border:1px solid #fde68a"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2L4 7v8c0 7.5 12 12 12 12s12-4.5 12-12V7l-12-5z" fill="#dd0031"/><text x="8" y="20" font-size="14" font-weight="bold" fill="white">A</text></svg></div><div><div class="sk-nm">Angular Platform</div><div class="sk-sb">Enterprise framework</div></div></div><div class="sk-tags"><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#dd0031" style="display:inline;margin-right:4px"><path d="M12 2L2 8v8c0 8 10 12 10 12s10-4 10-12V8l-10-6z" fill="#dd0031"/></svg>Angular</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#3f51b5" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#3f51b5" rx="2"/></svg>Ionic</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#3178c6" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#3178c6"/><text x="6" y="18" font-size="10" font-weight="bold" fill="white">TS</text></svg>TypeScript</span><span class="sk-tag">RxJS</span></div></div>
+      <div class="sk-card reveal d3"><div class="sk-hd"><div class="sk-ic" style="background:#ecfdf5;border:1px solid #6ee7b7"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2c7.732 0 14 6.268 14 14s-6.268 14-14 14S2 23.732 2 16 8.268 2 16 2z" fill="#68a063" opacity=".3"/><path d="M16 8v4m0 4v4m-4-4h4m4 0h-4" stroke="#68a063" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="sk-nm">Backend &amp; API</div><div class="sk-sb">Server &amp; data layer</div></div></div><div class="sk-tags"><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#68a063" style="display:inline;margin-right:4px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#68a063"/></svg>Node.js</span><span class="sk-tag">Express.js</span><span class="sk-tag">REST APIs</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#336791" style="display:inline;margin-right:4px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#336791"/></svg>SQL</span></div></div>
+      <div class="sk-card reveal"><div class="sk-hd"><div class="sk-ic" style="background:#fdf2f8;border:1px solid #f5d0fe"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="6" y="6" width="20" height="20" fill="#3178c6" rx="2"/><text x="10" y="24" font-size="14" font-weight="bold" fill="white">TS</text></svg></div><div><div class="sk-nm">Languages</div><div class="sk-sb">Programming languages</div></div></div><div class="sk-tags"><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#3178c6" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#3178c6"/><text x="6" y="18" font-size="10" font-weight="bold" fill="white">TS</text></svg>TypeScript</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#3776ab" style="display:inline;margin-right:4px"><path d="M2 2h20v20H2z" fill="#3776ab"/><text x="5" y="20" font-size="10" font-weight="bold" fill="#ffd43b">Py</text></svg>Python</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#004482" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#004482" rx="2"/><text x="8" y="18" font-size="10" font-weight="bold" fill="white">C</text></svg>C</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#00599c" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#00599c" rx="2"/><text x="6" y="18" font-size="10" font-weight="bold" fill="white">C++</text></svg>C++</span></div></div>
+      <div class="sk-card reveal d1"><div class="sk-hd"><div class="sk-ic" style="background:#fff7ed;border:1px solid #fed7aa"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M4 8h24M4 16h24M4 24h24" stroke="#f97316" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="sk-nm">Tools &amp; Workflow</div><div class="sk-sb">Dev environment</div></div></div><div class="sk-tags"><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f34f29" style="display:inline;margin-right:4px"><path d="M2 16l9.5-13 9.5 13H2z" fill="#f34f29" opacity=".7"/><path d="M12 6v10M7 11h10" stroke="#f34f29" stroke-width="1.5" stroke-linecap="round"/></svg>Git</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#181717" style="display:inline;margin-right:4px"><circle cx="12" cy="12" r="10" fill="#181717"/></svg>GitHub</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0078d4" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#0078d4" rx="2"/><text x="6" y="18" font-size="10" font-weight="bold" fill="white">VS</text></svg>VS Code</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#cb3837" style="display:inline;margin-right:4px"><path d="M2 4h20v16H2z" fill="#cb3837"/></svg>npm</span></div></div>
+      <div class="sk-card reveal d2"><div class="sk-hd"><div class="sk-ic" style="background:#eff6ff;border:1px solid #bfdbfe"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" fill="#2196f3" opacity=".3"/><path d="M16 10v12M10 16h12" stroke="#2196f3" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="sk-nm">UI/UX Design</div><div class="sk-sb">Design thinking</div></div></div><div class="sk-tags"><span class="sk-tag">Wireframing</span><span class="sk-tag">Prototyping</span><span class="sk-tag">Design Systems</span></div></div>
+      <div class="sk-card reveal d3"><div class="sk-hd"><div class="sk-ic" style="background:#f0fdf4;border:1px solid #bbf7d0"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="16" fill="#3f51b5" rx="3" opacity=".3"/><circle cx="16" cy="16" r="4" fill="#3f51b5"/></svg></div><div><div class="sk-nm">Mobile Dev</div><div class="sk-sb">Cross-platform</div></div></div><div class="sk-tags"><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#3f51b5" style="display:inline;margin-right:4px"><rect width="24" height="24" fill="#3f51b5" rx="2"/></svg>Ionic</span><span class="sk-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#dd0031" style="display:inline;margin-right:4px"><path d="M12 2L2 8v8c0 8 10 12 10 12s10-4 10-12V8l-10-6z" fill="#dd0031"/></svg>Angular Mobile</span><span class="sk-tag">PWA</span><span class="sk-tag">Flutter</span></div></div>
     </div>
   </div>
 </section>
@@ -532,55 +539,46 @@ footer::before{content:'';position:absolute;top:-100px;left:50%;transform:transl
         <h2 class="h2 reveal">Selected work</h2>
         <p class="reveal" style="font-size:.925rem;color:var(--muted);max-width:400px;margin-top:.5rem">Real projects, real impact — built with modern tech and crafted with care.</p>
       </div>
-      <a href="https://github.com/sumitkumar" target="_blank" class="cta-s reveal" style="white-space:nowrap;align-self:flex-end">
+      <a href="https://github.com/sumitverse?tab=repositories" target="_blank" class="cta-s reveal" style="white-space:nowrap;align-self:flex-end">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         View All on GitHub
       </a>
     </div>
     <div class="pj-grid">
       <div class="pj-card pj-lg reveal">
-        <div class="pj-thumb bg-t"><div class="pj-fade"></div><div class="pj-tc"><div class="pj-icon">📈</div><div class="pj-tt">Tubi Traders</div></div></div>
+        <div class="pj-thumb bg-t"><img src="https://github.com/sumitverse/Updated-Portfolio-/blob/main/05e039b7-140a-44e3-bb49-b3ab1c492fcc.jpeg?raw=true" alt="Tubi Traders" /><div class="pj-fade"></div><div class="pj-tc"><div class="pj-tt">Tubi Traders</div></div></div>
         <div class="pj-body">
-          <div class="pj-title">Tubi Traders — Trading Platform</div>
-          <p class="pj-desc">A responsive trading platform featuring live market data, interactive charts, real-time portfolio tracking, and a professional dashboard with live API integration. Built with a focus on performance and clean financial UI.</p>
-          <div class="pj-techs"><span class="pj-tech">HTML</span><span class="pj-tech">CSS</span><span class="pj-tech">JavaScript</span><span class="pj-tech">Live API</span><span class="pj-tech">Charts</span></div>
-          <div class="pj-links"><a href="https://github.com/sumitkumar" target="_blank" class="pl pl-g"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</a><a href="#" target="_blank" class="pl pl-s">Live Demo →</a></div>
-        </div>
-      </div>
-      <div class="pj-card pj-sm reveal d1">
-        <div class="pj-thumb bg-a"><div class="pj-fade"></div><div class="pj-tc"><div class="pj-icon">🤖</div><div class="pj-tt">AI Career Guidance</div></div></div>
-        <div class="pj-body">
-          <div class="pj-title">AI-Enhanced Career Guidance</div>
-          <p class="pj-desc">Smart career recommendation engine with AI-powered skill assessment and structured SRS documentation. Generates personalized learning roadmaps.</p>
-          <div class="pj-techs"><span class="pj-tech">Web</span><span class="pj-tech">AI Concepts</span><span class="pj-tech">SRS</span></div>
-          <div class="pj-links"><a href="https://github.com/sumitkumar" target="_blank" class="pl pl-g">GitHub</a><a href="#" target="_blank" class="pl pl-s">Live Demo →</a></div>
+          <div class="pj-title">RYDE — Ionic App</div>
+          <p class="pj-desc">Online Cycle Booking app with real-time location tracking, booking system, and user-friendly interface built with Ionic and Angular.</p>
+          <div class="pj-techs"><span class="pj-tech">Ionic</span><span class="pj-tech">Angular</span><span class="pj-tech">Typescript</span><span class="pj-tech">API Integretion</span><span class="pj-tech">Backend</span></div>
+          <div class="pj-links"><a href="https://github.com/sumitverse" target="_blank" class="pl pl-g"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</a><a href="#" target="_blank" class="pl pl-s">Live Demo →</a></div>
         </div>
       </div>
       <div class="pj-card pj-md reveal">
-        <div class="pj-thumb bg-g"><div class="pj-fade"></div><div class="pj-tc"><div class="pj-icon">🛡️</div><div class="pj-tt">InvoShield</div></div></div>
+        <div class="pj-thumb bg-g"><img src="https://github.com/sumitverse/Updated-Portfolio-/blob/main/InvoShield.png?raw=true" alt="InvoShield" /><div class="pj-fade"></div><div class="pj-tc"><div class="pj-tt">InvoShield</div></div></div>
         <div class="pj-body">
           <div class="pj-title">InvoShield — GST Fraud Detection</div>
           <p class="pj-desc">Fraud detection system using pattern recognition and data analytics to identify suspicious GST invoices. Features a real-time monitoring dashboard and reporting interface.</p>
           <div class="pj-techs"><span class="pj-tech">Web</span><span class="pj-tech">Data Analytics</span><span class="pj-tech">Dashboard</span></div>
-          <div class="pj-links"><a href="https://github.com/sumitkumar" target="_blank" class="pl pl-g">GitHub</a><a href="#" target="_blank" class="pl pl-s">Live Demo →</a></div>
+          <div class="pj-links"><a href="https://github.com/sumitverse" target="_blank" class="pl pl-g">GitHub</a><a href="#" target="_blank" class="pl pl-s">Live Demo →</a></div>
         </div>
       </div>
       <div class="pj-card pj-md reveal d1">
-        <div class="pj-thumb bg-i"><div class="pj-fade"></div><div class="pj-tc"><div class="pj-icon">🛍️</div><div class="pj-tt">Shopping Bazaar</div></div></div>
+        <div class="pj-thumb bg-i"><img src="https://github.com/sumitverse/Updated-Portfolio-/blob/main/AppleVisionPro.png?raw=true" alt="Shopping Bazaar" /><div class="pj-fade"></div><div class="pj-tc"><div class="pj-tt">Apple Vision Pro Clone</div></div></div>
         <div class="pj-body">
-          <div class="pj-title">Shopping Bazaar — Ionic App</div>
-          <p class="pj-desc">Cross-platform mobile shopping app with categorized products, user authentication, cart functionality, and a polished mobile-first UI built with Ionic and Angular.</p>
-          <div class="pj-techs"><span class="pj-tech">Ionic</span><span class="pj-tech">Angular</span><span class="pj-tech">TypeScript</span></div>
-          <div class="pj-links"><a href="https://github.com/sumitkumar" target="_blank" class="pl pl-g">GitHub</a><a href="#" target="_blank" class="pl pl-s">Live Demo →</a></div>
+          <div class="pj-title">Apple Vision Pro Clone</div>
+          <p class="pj-desc">A clone of the Apple Vision Pro headset with similar design and functionality, built using modern web technologies.</p>
+          <div class="pj-techs"><span class="pj-tech">HTML</span><span class="pj-tech">CSS</span><span class="pj-tech">JavaScript</span><span class="pj-tech">Three.js</span><span class="pj-tech">WebGL</span></div>
+          <div class="pj-links"><a href="https://github.com/sumitverse" target="_blank" class="pl pl-g">GitHub</a><a href="#" target="_blank" class="pl pl-s">Live Demo →</a></div>
         </div>
       </div>
       <div class="pj-card pj-sm reveal d2">
-        <div class="pj-thumb bg-p"><div class="pj-fade"></div><div class="pj-tc"><div class="pj-icon">📷</div><div class="pj-tt">Photography Hub</div></div></div>
+        <div class="pj-thumb bg-p"><img src="https://github.com/sumitverse/Updated-Portfolio-/blob/main/PhotographyTutorial.png?raw=true" alt="Photography Hub" /><div class="pj-fade"></div><div class="pj-tc"><div class="pj-tt">Photography Hub</div></div></div>
         <div class="pj-body">
           <div class="pj-title">Photography Tutorial Website</div>
           <p class="pj-desc">Fully responsive educational platform for photography learners with structured tutorials, visual galleries, and a clean editorial layout.</p>
           <div class="pj-techs"><span class="pj-tech">HTML</span><span class="pj-tech">CSS</span><span class="pj-tech">JavaScript</span></div>
-          <div class="pj-links"><a href="https://github.com/sumitkumar" target="_blank" class="pl pl-g">GitHub</a><a href="#" target="_blank" class="pl pl-s">Live →</a></div>
+          <div class="pj-links"><a href="https://github.com/sumitverse" target="_blank" class="pl pl-g">GitHub</a><a href="#" target="_blank" class="pl pl-s">Live →</a></div>
         </div>
       </div>
     </div>
@@ -602,7 +600,7 @@ footer::before{content:'';position:absolute;top:-100px;left:50%;transform:transl
           <div class="t-card">
             <div class="t-top"><div class="t-role">Web Development &amp; Designing Intern</div><div class="t-date">2024</div></div>
             <div class="t-co">Oasis Infobyte</div>
-            <p class="t-desc">Contributed to real client projects as a full-stack web developer and UI/UX design intern. Built responsive interfaces using HTML, CSS, and JavaScript — focusing on cross-browser compatibility, performance optimization, and accessible design. Collaborated with the team on wireframing, design systems, and user-centered interface design. Gained deep exposure to professional git workflows and agile collaboration.</p>
+            <p class="t-desc">Contributed to real client projects as a full-stack web developer and UI/UX design intern. Built responsive interfaces using HTML, CSS, and JavaScript — focusing on cross-browser compatibility, performance optimization, and accessible design. Collaborated with the team on wireframing, design systems, and user-centered interface design. Gained deep exposure to professional git workflows and agile collaborations.</p>
             <div class="t-tags"><span class="t-tag">HTML/CSS/JS</span><span class="t-tag">UI/UX Design</span><span class="t-tag">Responsive Design</span><span class="t-tag">Git</span><span class="t-tag">Team Collaboration</span><span class="t-tag">Figma</span></div>
           </div>
         </div>
@@ -610,7 +608,7 @@ footer::before{content:'';position:absolute;top:-100px;left:50%;transform:transl
           <div class="t-dot"></div>
           <div class="t-card">
             <div class="t-top"><div class="t-role">Full Stack Developer — Self-directed</div><div class="t-date">2022 — Present</div></div>
-            <div class="t-co">Sumitverse — Personal Projects</div>
+            <div class="t-co">sumitverse — Personal Projects</div>
             <p class="t-desc">Self-directed development of multiple full-stack and mobile projects spanning trading platforms, AI-powered systems, fraud detection, and educational platforms. Continuously applying and mastering modern technologies across the full stack — React, Angular, Node.js, TypeScript, Ionic, and Redux — while focusing on production-quality code, clean architecture, and exceptional UX.</p>
             <div class="t-tags"><span class="t-tag">React.js</span><span class="t-tag">Angular</span><span class="t-tag">Node.js</span><span class="t-tag">TypeScript</span><span class="t-tag">Ionic</span><span class="t-tag">Redux</span><span class="t-tag">SQL</span></div>
           </div>
@@ -635,7 +633,7 @@ footer::before{content:'';position:absolute;top:-100px;left:50%;transform:transl
         </div>
       </div>
       <div class="ct-form reveal d2">
-        <div class="f2"><div class="fg"><label class="fl">First name</label><input type="text" class="fi" placeholder="First Name" id="fn"></div><div class="fg"><label class="fl">Last name</label><input type="text" class="fi" placeholder="Doe" id="ln"></div></div>
+        <div class="f2"><div class="fg"><label class="fl">First name</label><input type="text" class="fi" placeholder="First Name" id="fn"></div><div class="fg"><label class="fl">Last name</label><input type="text" class="fi" placeholder="Last Name" id="ln"></div></div>
         <div class="fg"><label class="fl">Email address</label><input type="email" class="fi" placeholder="Email Address" id="em"></div>
         <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" placeholder="Project inquiry · Job opportunity · Collaboration" id="su"></div>
         <div class="fg"><label class="fl">Message</label><textarea class="fi" rows="5" placeholder="Tell me about your project..." id="ms"></textarea></div>
@@ -650,7 +648,7 @@ footer::before{content:'';position:absolute;top:-100px;left:50%;transform:transl
   <div class="container">
     <div class="ft-top">
       <div class="ft-brand">
-        <div class="fl-lg">Sumitverse</div>
+        <div class="fl-lg">sumitverse</div>
         <p>Building scalable, modern, and high-performance web applications — crafted with precision, designed for impact.</p>
       </div>
       <div><div class="ft-col-l">Navigate</div><div class="ft-links"><a href="#about" class="ft-link">About</a><a href="#skills" class="ft-link">Skills</a><a href="#projects" class="ft-link">Projects</a><a href="#experience" class="ft-link">Experience</a><a href="#contact" class="ft-link">Contact</a></div></div>
